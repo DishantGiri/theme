@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Use Poppins as the default sans-serif font for the site */
+:root {
+    --font-sans: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+html,
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    color: #222;
+    background: #f9fafb;
+    line-height: 1.5;
+
+}
+
+.about-title {
+    text-align: center;
+    padding: 70px 150px;
+    background-color: #e4dcd1;
+    margin-bottom: 40px;
+}
+
+.about-title h1 {
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 54px;
+}
+
+.about-title p {
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 18px;
+}
+
+.form {
+    padding-top: 40px;
+}
+
+.left-form .form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.left-form p {
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.left-form {
+    padding: 60px 50px;
+    width: 400px;
+    background: url(./assets/image\ 209.jpg) no-repeat center;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.left-form input {
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.btn {
+    background-color: #222;
+    color: #fff;
+    padding: 15px 0px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    display: inline-block;
+    /* make input.submit look like a button */
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    transition: background-color 160ms ease, transform 120ms ease, box-shadow 160ms ease, filter 160ms ease;
+}
+
+.contact-section {
+    padding: 0px 90px;
+    display: flex;
+    gap: 32px;
+    /* make children stretch so both columns match height */
+    align-items: stretch;
+}
+
+.contact-section input {
+    background-color: #f6f6f6;
+}
+
+
+/* Right form styles */
+.right-form {
+    /* fill remaining space; use 0 flex-basis so it doesn't leave unused gap */
+    flex: 1 1 0%;
+    display: flex;
+    /* allow child form to stretch vertically */
+}
+
+.right-form form {
+    background: #d7d7d2;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(20, 20, 20, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    /* fill available height so it matches left-form */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.right-form .email-num {
+    display: flex;
+    gap: 12px;
+}
+
+.right-form .email-num input {
+    flex: 1 1 0;
+    min-width: 0;
+    /* prevents overflowing when inside flex */
+}
+
+.right-form input[type="text"],
+.right-form input[type="email"],
+.right-form input[type="tel"],
+.right-form textarea {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    outline: none;
+    font-family: var(--font-sans);
+    font-size: 14px;
+}
+
+.right-form textarea {
+    /* prevent user from stretching the textarea */
+    resize: none;
+    min-height: 100px;
+    /* reduced so card height matches left form without changing gaps */
+    background-color: #f6f6f6;
+    color: #222;
+    overflow: auto;
+    /* ensure content still scrolls internally if needed */
+}
+
+.right-form .btn {
+    background: #000000;
+    padding: 14px 22px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    width: 220px;
+    font-size: 16px;
+    align-self: flex-end;
+    /* align button to right in the flex column */
+}
+
+/* Hover / focus effects for buttons */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    filter: brightness(0.95);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(30, 178, 0, 0.15);
+}
+
+/* Inputs focus style for accessibility */
+.right-form input[type="text"]:focus,
+.right-form input[type="email"]:focus,
+.right-form input[type="tel"]:focus,
+.right-form textarea:focus,
+.left-form input:focus {
+    border-color: #cbded0;
+    box-shadow: 0 0 0 4px rgba(30, 178, 0, 0.06);
+}
+
+/* Responsive adjustments for contact layout */
+@media (max-width: 900px) {
+    .contact-section {
+        flex-direction: column;
+        padding: 0 24px;
+        gap: 18px;
+    }
+
+    .left-form {
+        width: 100%;
+        padding: 24px;
+        border-radius: 12px;
+        background-position: center;
+    }
+
+    .right-form {
+        width: 100%;
+    }
+
+    .right-form form {
+        padding: 18px;
+    }
+
+    .right-form .email-num {
+        flex-direction: column;
+    }
+
+    .right-form .btn {
+        width: 100%;
+    }
+}
