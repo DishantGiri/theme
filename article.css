@@ -1,0 +1,279 @@
+html {
+    scroll-behavior: smooth;
+    /* smooth anchor scrolling for TOC links */
+}
+
+body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.xentaflex-review-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.review-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 0 60px;
+    align-items: stretch;
+}
+
+.content-section {
+    flex: 1;
+}
+
+.main-title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.meta-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.rating-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.rating-label {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.rating-stars {
+    display: flex;
+}
+
+.star {
+    color: #ffc107;
+    font-size: 24px;
+    margin-right: 2px;
+}
+
+.star:last-child {
+    color: #ddd;
+}
+
+.product-image-wrapper {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    /* keeps the image from growing too large */
+    height: auto;
+    /* limit visual height so the image doesn't dominate the header */
+    max-height: 280px;
+    /* maintain aspect ratio */
+    margin: 0 auto 40px;
+    /* centers image and preserves previous bottom spacing */
+    object-fit: contain;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 40px 0;
+}
+
+.main-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.main-content section {
+    margin-bottom: 60px;
+    scroll-margin-top: 100px;
+}
+
+.main-content h2 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 20px;
+    /* padding-bottom: 10px; */
+    border-bottom: 1px solid #eee;
+}
+
+.main-content h3 {
+    font-size: 20px;
+    margin: 25px 0 15px;
+}
+
+.main-content p {
+    margin-bottom: 16px;
+    /* make paragraph text justified for a clean column look */
+    text-align: justify;
+    /* use inter-word justification where supported */
+    text-justify: inter-word;
+    /* allow hyphenation on supported browsers for better breaks */
+    hyphens: auto;
+}
+
+.main-content ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.main-content li {
+    margin-bottom: 8px;
+}
+
+.pros-cons-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.pros,
+.cons {
+    flex: 1;
+}
+
+.pros h3 {
+    color: #2e7d32;
+}
+
+.cons h3 {
+    color: #c62828;
+}
+
+.faq-item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.faq-item h3 {
+    color: #000;
+    margin-bottom: 10px;
+}
+
+/* Sidebar and TOC styles - keeping your original design */
+.sidebar {
+    flex: 0 0 360px;
+    /* increased slightly to give TOC more horizontal room */
+    display: flex;
+    flex-direction: column;
+}
+
+.toc-box {
+    position: sticky;
+    top: 20px;
+    padding: 10px 0 12px 0;
+    background: #fff;
+    z-index: 10;
+    /* allow the TOC to grow taller (no internal scrolling) */
+    max-height: none;
+    overflow-y: visible;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Blue rounded pill header like the design */
+.toc-title {
+    /* prevent cropping: make title a block that sizes with box-model and wraps text */
+    display: block;
+    box-sizing: border-box;
+    background: #0726a8;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 0 0 16px 0;
+    white-space: normal;
+
+    line-height: 1.2;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0 16px 12px 16px;
+    /* a little more horizontal padding for the wider TOC */
+    margin: 12px 0 0 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+
+.toc-list a {
+    color: #111;
+    text-decoration: none;
+    font-weight: 400;
+    display: block;
+    font-size: 12px;
+    padding: 8px 5px;
+    border-radius: 5px;
+}
+
+.toc-list a:hover {
+    background-color: #d3d3d3;
+}
+
+/* Quick-scan spec styles */
+.quick-scan {
+    background: #fff;
+    padding: 12px 16px;
+    margin: 12px 0 18px 0;
+    border-left: 4px solid #0726a8;
+}
+
+.quick-scan .spec-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.quick-scan .spec-list li {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.quick-scan .spec-list a {
+    color: #0726a8
+}
+
+/* Summary boxed paragraph used in the How does XentaFlex Work? section */
+.summary-box {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 16px;
+    background: #fff;
+}
+
+.summary-box p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Responsive: reduce wrapper padding on small screens */
+@media (max-width: 880px) {
+    .review-wrapper {
+        padding: 0 16px;
+    }
+}
