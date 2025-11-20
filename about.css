@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Use Poppins as the default sans-serif font for the site */
+:root {
+    --font-sans: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+html,
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    color: #222;
+    background: #f9fafb;
+    line-height: 1.5;
+
+}
+
+.about-title {
+    text-align: center;
+    padding: 70px 24px;
+    background-color: #e4dcd1;
+    margin-bottom: 40px;
+}
+
+.about-title h1 {
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 54px;
+}
+
+.about-title p {
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 18px;
+}
+
+.image {
+    object-fit: cover;
+    max-width: 600px;
+    width: 100%;
+}
+
+.image img {
+    height: auto;
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+}
+
+.cycle {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 24px;
+}
+
+.text-part {
+    flex: 1;
+    max-width: 500px;
+}
+
+.text-part p {
+    text-align: justify;
+    font-size: 16px;
+    margin-top: 12px;
+}
+
+.text-part h2 {
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.middle-cycle .image {
+    max-width: 600px;
+}
+
+.our-team .text-part {
+    flex: 1;
+    max-width: 450px;
+}
+
+.our-team {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 50px;
+    background-color: #e4dcd1;
+    margin-top: 20px;
+}
+
+.profile {
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.profile p {
+    font-size: 12px;
+    text-align: center;
+    width: auto;
+    max-width: 220px;
+}
+
+.profile .profile-pic {
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile .profile-pic img {
+    height: 100%;
+    border-radius: 50%;
+}
+
+.profile h3 {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.individual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* class to replace inline role color */
+.individual .role {
+    color: #002fb2;
+}
+
+/* bottom section moved from inline styles */
+.bottom {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.bottom p {
+    opacity: 0.6;
+    margin: 0;
+}
+
+.bottom h2 {
+    font-size: 32px;
+    color: #1eb200;
+    margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .cycle {
+        flex-direction: column;
+    }
+
+    .middle-cycle {
+        flex-direction: column;
+    }
+
+    /* On small screens, place the image (cycle-left) before the text-part
+       so the image appears above the paragraph for the middle section. */
+    .middle-cycle .cycle-left {
+        order: -1;
+        width: 100%;
+    }
+
+    .profile {
+        justify-content: center;
+    }
+
+    .individual {
+        flex: 1 1 100%;
+        max-width: 420px;
+    }
+
+    .about-title h1 {
+        font-size: 1.6rem;
+    }
+
+    .text-part h2 {
+        font-size: 1.25rem;
+    }
+
+    .bottom h2 {
+        font-size: 24px;
+    }
+}
+
+/* Additional adjustments specifically for the our-team section */
+@media (max-width: 900px) {
+    .our-team {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        /* make left and right padding equal on small screens */
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .our-team .text-part {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .profile {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Make individual cards take full width on small screens (stack) */
+    .individual {
+        flex: 1 1 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .profile p {
+        width: 100%;
+        max-width: none;
+        padding: 0 12px;
+    }
+}
+
+/* Restore larger-screen (desktop) fixed sizes/spacing to match original layout
+   while keeping the responsive rules above intact. */
+@media (min-width: 901px) {
+    .about-title {
+        padding: 70px 150px;
+    }
+
+    .about-title h1 {
+        font-size: 52px;
+        line-height: 54px;
+    }
+
+    .image {
+        width: 600px;
+        height: 300px;
+        max-width: none;
+    }
+
+    .image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    .cycle {
+        gap: 50px;
+        padding: 40px 50px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .text-part {
+        max-width: none;
+        width: 500px;
+    }
+
+    .our-team {
+        gap: 60px;
+        padding: 40px 50px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .our-team .text-part {
+        width: 450px;
+        max-width: none;
+    }
+
+    .profile p {
+        max-width: none;
+        width: 200px;
+    }
+
+    .individual {
+        max-width: none;
+        flex: 0 0 auto;
+    }
+}
