@@ -1,6 +1,143 @@
+/* Buy Now button styles */
+.buy-now-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0 0 0;
+}
+
+.buy-now-btn {
+    display: inline-block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(90deg, #001a7d 0%, #0033cc 100%);
+    border: none;
+    border-radius: 18px;
+    padding: 16px 54px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.13);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+}
+
+.buy-now-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 28%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0.18) 100%);
+    transform: skewX(-18deg);
+    animation: shine 2.2s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -75%;
+    }
+
+    100% {
+        left: 120%;
+    }
+}
+
+.buy-now-btn:hover {
+    background: linear-gradient(90deg, #0033cc 0%, #001a7d 100%);
+    box-shadow: 0 8px 28px rgba(0, 51, 204, 0.18);
+    transform: scale(1.04);
+    letter-spacing: 1.5px;
+}
+
+/* Mobile TOC Dropdown Styles */
+.mobile-toc-wrapper {
+    display: none;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 18px auto;
+    position: relative;
+    z-index: 10;
+}
+
+.mobile-toc-toggle {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    padding: 14px 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+    gap: 8px;
+}
+
+.toc-toggle-icon {
+    transition: transform 0.3s;
+}
+
+.mobile-toc-toggle.toc-open .toc-toggle-icon {
+    transform: rotate(180deg);
+}
+
+
+.mobile-toc-dropdown {
+    display: none;
+    background: #fff;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 10px 0;
+    margin-top: 2px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.mobile-toc-dropdown .toc-list {
+    padding: 0 12px;
+    margin: 0;
+}
+
+.mobile-toc-dropdown .toc-list li {
+    margin: 8px 0;
+}
+
+.mobile-toc-dropdown .toc-list a {
+    font-size: 1rem;
+    color: #222;
+    text-decoration: none;
+    display: block;
+    padding: 6px 0;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.mobile-toc-dropdown .toc-list a:hover {
+    background: #f0f7ff;
+    color: #1976d2;
+}
+
+@media (max-width: 900px) {
+    .sidebar .toc-box {
+        display: none;
+    }
+
+    .mobile-toc-wrapper {
+        display: block;
+    }
+}
+
+/* Global resets and responsiveness */
 html {
     scroll-behavior: smooth;
-    /* smooth anchor scrolling for TOC links */
 }
 
 body {
@@ -8,8 +145,31 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
+* {
+    box-sizing: border-box;
+}
+
+img,
+.product-image,
+.jayce-img,
+.avatar {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Typography */
+body p,
+.main-content li {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+/* Main container */
 .xentaflex-review-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -19,15 +179,18 @@ body {
 
 .review-wrapper {
     display: flex;
-    gap: 40px;
-    padding: 0 60px;
+    gap: 28px;
+    padding: 0 24px;
     align-items: stretch;
 }
 
 .content-section {
-    flex: 1;
+    flex: 1.3;
+    min-width: 0;
+    /* Prevent flex item overflow */
 }
 
+/* Titles and headers */
 .main-title {
     font-size: 30px;
     font-weight: 700;
@@ -41,7 +204,7 @@ body {
     gap: 20px;
     align-items: center;
     margin-bottom: 15px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .rating-section {
@@ -79,20 +242,19 @@ body {
     display: block;
     width: 100%;
     max-width: 450px;
-    /* keeps the image from growing too large */
     height: auto;
-    /* limit visual height so the image doesn't dominate the header */
     max-height: 280px;
-    /* maintain aspect ratio */
     margin: 0 auto 40px;
-    /* centers image and preserves previous bottom spacing */
     object-fit: contain;
 }
 
-.separator {
+.separator,
+hr {
     border: none;
-    border-top: 1px solid #ddd;
-    margin: 40px 0;
+    height: 2px;
+    background: rgb(214, 214, 214);
+    border-radius: 2px;
+    margin: 30px 40px;
 }
 
 .main-content {
@@ -110,7 +272,6 @@ body {
     font-size: 24px;
     color: #000;
     margin-bottom: 20px;
-    /* padding-bottom: 10px; */
     border-bottom: 1px solid #eee;
 }
 
@@ -121,12 +282,6 @@ body {
 
 .main-content p {
     margin-bottom: 16px;
-    /* make paragraph text justified for a clean column look */
-    text-align: justify;
-    /* use inter-word justification where supported */
-    text-justify: inter-word;
-    /* allow hyphenation on supported browsers for better breaks */
-    hyphens: auto;
 }
 
 .main-content ul {
@@ -138,15 +293,246 @@ body {
     margin-bottom: 8px;
 }
 
+#ingredients {
+    margin-top: 70px;
+}
+
+/* Comment section */
+.comment-section {
+    max-width: 900px;
+    margin: 48px auto 32px auto;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 5px 7px 20px 0px rgb(0 0 0 / 38%);
+    border: 1.5px solid #e0e0e0;
+    padding: 32px 30px 28px;
+}
+
+.comment-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.comment-meta {
+    font-size: 0.98rem;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.comment-required {
+    color: #e53935;
+    font-size: 1.1em;
+}
+
+.comment-form label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.comment-form textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 1.2px solid #e0e0e0;
+    padding: 16px;
+    font-size: 1.05rem;
+    background: #f6f6f6;
+    resize: vertical;
+    min-height: 120px;
+    margin-top: 6px;
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"] {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1.2px solid #e0e0e0;
+    padding: 10px 12px;
+    font-size: 1rem;
+    background: #f6f6f6;
+    margin-top: 6px;
+}
+
+.website-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.website-icon {
+    font-size: 1.1rem;
+    color: #888;
+    margin-left: 6px;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.97rem;
+    margin-bottom: 18px;
+}
+
+.comment-submit {
+    background: #1976d2;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.08rem;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    transition: background 0.2s;
+}
+
+.comment-submit:hover {
+    background: #1565c0;
+}
+
+/* Prev-next navigation cards */
+.prev-next-cards {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    margin: 24px 0 32px 0;
+}
+
+.prev-card,
+.next-card {
+    flex: 1 1 340px;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 18px;
+    border: 1.2px solid #d3d3d3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 18px 22px;
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: #222;
+    text-decoration: none;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.prev-card:hover,
+.next-card:hover {
+    box-shadow: 0 4px 18px rgba(58, 123, 213, 0.13);
+    border-color: #3a7bd5;
+}
+
+.prev-card svg,
+.next-card svg {
+    flex-shrink: 0;
+}
+
+.prev-next-sp {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 55px;
+    color: #535353;
+    font-weight: 600;
+}
+
+/* Jayce author card */
+.jayce-card {
+    font-size: 0.97rem;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 22px;
+    border: 1.5px solid #e0e0e0;
+    box-shadow: 5px 7px 20px 0px rgb(0 0 0 / 38%);
+    padding: 32px 38px;
+    margin: 38px 100px 0;
+    gap: 38px;
+    max-width: 1200px;
+}
+
+.jayce-img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    background: #eaeaea;
+    flex-shrink: 0;
+}
+
+.jayce-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jayce-name {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.jayce-title {
+    font-size: 0.98rem;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.jayce-title a {
+    color: #3a7bd5;
+    text-decoration: underline;
+}
+
+.jayce-desc {
+    font-size: 0.93rem;
+    color: #222;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Sources list */
+.sources-list {
+    background: #f8f9fa;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 14px;
+    padding: 22px 28px;
+    margin-top: 12px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Pros and cons - FIXED FOR RESPONSIVENESS */
 .pros-cons-container {
     display: flex;
     gap: 30px;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .pros,
 .cons {
     flex: 1;
+    min-width: 300px;
 }
 
 .pros h3 {
@@ -157,6 +543,104 @@ body {
     color: #c62828;
 }
 
+.pros-cons-table {
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 18px;
+    background: #fff;
+}
+
+.pros-cons-table .table-header {
+    display: flex;
+    background: #666;
+    color: #fff;
+    font-weight: 700;
+    align-items: center;
+}
+
+.pros-cons-table .table-header .header-left,
+.pros-cons-table .table-header .header-right {
+    flex: 1;
+    text-align: center;
+    padding: 12px 16px;
+}
+
+.pros-cons-inner {
+    display: flex;
+}
+
+.pros-cons-inner .pros,
+.pros-cons-inner .cons {
+    flex: 1;
+    padding: 16px 20px;
+}
+
+.pros-cons-inner .pros {
+    border-right: 1px solid #e0e0e0;
+}
+
+.pros-cons-table ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pros-cons-table li {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.pros-cons-inner .pros li::before {
+    content: "✔";
+    color: #2ecc71;
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.pros-cons-inner .cons li::before {
+    content: "✖";
+    color: #e74c3c;
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+.pros-summary {
+    border-top: 1px solid #e0e0e0;
+    padding: 14px 18px;
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+    margin: 0;
+}
+
+.pros-summary-box {
+    position: relative;
+    border: 1.5px solid #000;
+    border-radius: 12px;
+    background: #fff;
+    padding: 14px 18px 14px 26px;
+    margin: 18px 0 30px;
+    box-sizing: border-box;
+}
+
+.pros-summary-box::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background: #000;
+    border-radius: 12px 0 0 12px;
+}
+
+.pros-summary-box p {
+    margin: 0;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* FAQ styles */
 .faq-item {
     margin-bottom: 25px;
     padding-bottom: 20px;
@@ -168,10 +652,155 @@ body {
     margin-bottom: 10px;
 }
 
-/* Sidebar and TOC styles - keeping your original design */
+.faq-list {
+    margin-top: 18px;
+}
+
+.faq-dropdown {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.faq-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.faq-toggle:hover {
+    background: #f8f8f8;
+}
+
+.faq-icon {
+    width: 22px;
+    height: 22px;
+    margin-left: 24px;
+    transition: transform 0.3s;
+}
+
+.faq-dropdown.open .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 18px;
+    background: #fff;
+    transition: max-height 0.3s ease;
+}
+
+.faq-dropdown.open .faq-content {
+    max-height: 200px;
+    padding-bottom: 16px;
+}
+
+/* Tables */
+.price-table,
+.side-effects-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px 0;
+    font-size: 15px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.price-table th,
+.price-table td,
+.side-effects-table th,
+.side-effects-table td {
+    border: 1px solid #222;
+    padding: 12px 10px;
+    text-align: left;
+}
+
+.price-table th,
+.side-effects-table th {
+    background: #f8f8f8;
+    font-weight: 700;
+}
+
+.row-green td {
+    color: #218838;
+    font-weight: 600;
+}
+
+.row-yellow td {
+    color: #b8860b;
+    font-weight: 600;
+}
+
+.row-red td {
+    color: #c82333;
+    font-weight: 600;
+}
+
+/* Scam panel */
+.scam-panel {
+    background: #e9dfd3;
+    border-radius: 22px;
+    padding: 28px 32px 24px 32px;
+    margin: 32px 0 36px 0;
+    color: #222;
+    box-sizing: border-box;
+}
+
+.scam-panel h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.scam-panel p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0 0 18px 0;
+    text-align: justify;
+}
+
+.scam-panel a {
+    color: #222;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* Refund alert */
+.refund-alert {
+    border: 2px solid #e74c3c;
+    border-radius: 12px;
+    background: #fff;
+    color: #e74c3c;
+    padding: 12px 18px;
+    margin: 24px 0 18px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.refund-icon {
+    font-size: 20px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+/* Sidebar and TOC - FIXED FOR MOBILE SPACE ISSUE */
 .sidebar {
-    flex: 0 0 360px;
-    /* increased slightly to give TOC more horizontal room */
+    flex: 0 0 270px;
     display: flex;
     flex-direction: column;
 }
@@ -179,19 +808,17 @@ body {
 .toc-box {
     position: sticky;
     top: 20px;
-    padding: 10px 0 12px 0;
+    padding: 10px 8px 12px 8px;
     background: #fff;
     z-index: 10;
-    /* allow the TOC to grow taller (no internal scrolling) */
     max-height: none;
     overflow-y: visible;
     overflow-x: hidden;
     box-sizing: border-box;
+    width: 100%;
 }
 
-/* Blue rounded pill header like the design */
 .toc-title {
-    /* prevent cropping: make title a block that sizes with box-model and wraps text */
     display: block;
     box-sizing: border-box;
     background: #0726a8;
@@ -205,19 +832,17 @@ body {
     text-align: center;
     margin: 0 0 16px 0;
     white-space: normal;
-
     line-height: 1.2;
 }
 
 .toc-list {
     list-style: none;
     padding: 0 16px 12px 16px;
-    /* a little more horizontal padding for the wider TOC */
     margin: 12px 0 0 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    width: 100%;
 }
-
 
 .toc-list a {
     color: #111;
@@ -225,15 +850,20 @@ body {
     font-weight: 400;
     display: block;
     font-size: 12px;
-    padding: 8px 5px;
+    padding: 8px 0;
     border-radius: 5px;
+    line-height: 13px;
 }
 
+.toc-list a.active,
 .toc-list a:hover {
-    background-color: #d3d3d3;
+    color: #1976d2;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.2s;
 }
 
-/* Quick-scan spec styles */
+/* Quick scan specs */
 .quick-scan {
     background: #fff;
     padding: 12px 16px;
@@ -253,16 +883,28 @@ body {
 }
 
 .quick-scan .spec-list a {
-    color: #0726a8
+    color: #0726a8;
 }
 
-/* Summary boxed paragraph used in the How does XentaFlex Work? section */
+/* Summary box */
 .summary-box {
-    border: 1px solid #000;
-    border-radius: 10px;
-    padding: 12px 16px;
+    position: relative;
+    border: 1.5px solid #000;
+    border-radius: 0px 12px 12px 0px;
+    padding: 12px 16px 12px 28px;
     margin-top: 16px;
     background: #fff;
+    overflow: visible;
+}
+
+.summary-box::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    background: #000;
 }
 
 .summary-box p {
@@ -271,9 +913,536 @@ body {
     line-height: 1.6;
 }
 
-/* Responsive: reduce wrapper padding on small screens */
+/* Research & rating panel */
+.research-section {
+    background: #e9dfd3;
+    padding: 18px;
+    border-radius: 12px;
+    margin: 70px auto 0;
+    color: #111;
+    max-width: 800px;
+}
+
+.research-section h2 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.research-section p {
+    margin: 0 0 14px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 24px;
+    align-items: start;
+}
+
+.research-item {
+    min-height: 1px;
+}
+
+.research-item h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.research-item .num {
+    font-weight: 800;
+    margin-right: 8px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.rating .score {
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.rating .stars {
+    color: #f5c518;
+    font-size: 14px;
+}
+
+.muted {
+    margin: 0;
+    color: #6b6b6b;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.overall-score {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 18px;
+}
+
+.overall-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.overall-header h4 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.overall-header .score-number {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.overall-description {
+    margin: 0;
+    color: #6b6b6b;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Reviews grid */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.review-card {
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 14px;
+    background: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 210px;
+}
+
+.review-card .card-stars {
+    align-self: flex-end;
+    color: #f5c518;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.review-text {
+    margin: 0 0 18px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #222;
+    text-align: justify;
+}
+
+.review-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    justify-content: flex-end;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid transparent;
+}
+
+.meta-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    align-items: flex-end;
+}
+
+.meta-text .date,
+.meta-text span.date {
+    font-size: 12px;
+    color: #666;
+}
+
+.card-red {
+    border-color: #e74c3c;
+}
+
+.card-green {
+    border-color: #2ecc71;
+}
+
+.card-blue {
+    border-color: #3498db;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Large Desktop to Small Desktop */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .review-wrapper {
+        padding: 0 30px;
+        gap: 30px;
+    }
+
+    .sidebar {
+        flex: 0 0 280px;
+    }
+
+    .jayce-card {
+        margin: 38px 40px 0;
+    }
+}
+
+/* Prev-next cards responsive */
+@media (max-width: 900px) {
+    .prev-next-cards {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .prev-card,
+    .next-card {
+        padding: 12px 8px;
+        font-size: 0.97rem;
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 880px) {
     .review-wrapper {
         padding: 0 16px;
+    }
+}
+
+/* CRITICAL FIX: Remove sidebar space on tablet and mobile */
+@media (max-width: 768px) {
+    .review-wrapper {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 30px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Make sidebar take full width - removes right space */
+    .sidebar {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%;
+        order: -1;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Make content section full width */
+    .content-section {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .toc-box {
+        position: relative;
+        top: 0;
+        max-height: 400px;
+        overflow-y: auto;
+        width: 100%;
+        padding: 0;
+        margin: 0 0 20px 0;
+    }
+
+    .toc-list {
+        width: 100%;
+        padding: 0 10px 12px 10px;
+    }
+
+    .jayce-card {
+        margin: 38px 20px 0;
+        gap: 20px;
+    }
+
+    .research-section {
+        padding: 14px;
+        margin: 40px 10px 0;
+    }
+
+    .price-table,
+    .side-effects-table {
+        font-size: 13px;
+        overflow-x: auto;
+        display: block;
+        width: 100%;
+    }
+
+    .scam-panel {
+        padding: 20px 16px;
+        margin: 24px 10px;
+    }
+
+    .scam-panel h2 {
+        font-size: 22px;
+    }
+
+    .scam-panel p {
+        font-size: 15px;
+    }
+
+    .separator,
+    hr {
+        margin: 20px 10px;
+    }
+
+    .prev-next-sp {
+        padding: 0px 20px;
+        font-size: 14px;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Touch target improvements */
+    button,
+    a,
+    .faq-toggle,
+    .comment-submit {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Fix pros/cons layout for mobile */
+    .pros-cons-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .pros,
+    .cons {
+        min-width: 100%;
+    }
+}
+
+/* Mobile specific (720px and below) */
+@media (max-width: 720px) {
+    .review-wrapper {
+        flex-direction: column;
+        padding: 0 12px;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .comment-section {
+        border-radius: 12px;
+        margin: 24px 10px;
+        padding: 16px 8px 12px 8px;
+        width: calc(100% - 20px);
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .comment-title {
+        font-size: 1.15rem;
+    }
+
+    .comment-form textarea,
+    .comment-form input[type="text"],
+    .comment-form input[type="email"],
+    .comment-form input[type="url"] {
+        font-size: 16px;
+        /* Prevents iOS zoom */
+    }
+
+    .comment-submit {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .product-image {
+        max-width: 100%;
+        max-height: 200px;
+    }
+
+    .main-content {
+        font-size: 15px;
+    }
+
+    .main-content h2 {
+        font-size: 20px;
+    }
+
+    .main-content h3 {
+        font-size: 17px;
+    }
+
+    .quick-scan {
+        padding: 10px 12px;
+        margin: 10px 0 14px 0;
+    }
+
+    .quick-scan .spec-list li {
+        font-size: 13px;
+        word-break: break-word;
+    }
+
+    .summary-box,
+    .pros-summary-box {
+        padding: 12px 14px 12px 22px;
+        margin: 14px 0 20px;
+    }
+
+    .refund-alert {
+        flex-direction: column;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .faq-toggle {
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+
+    .faq-icon {
+        width: 18px;
+        height: 18px;
+        margin-left: 12px;
+    }
+
+    .pros-cons-inner {
+        flex-direction: column;
+    }
+
+    .pros-cons-inner .pros {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .pros-cons-table .table-header {
+        flex-direction: column;
+        gap: 4px;
+        text-align: left;
+        padding-left: 12px;
+    }
+
+    .jayce-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 10px;
+        gap: 18px;
+        margin: 20px 10px 0;
+        width: calc(100% - 20px);
+    }
+
+    .jayce-img {
+        width: 100%;
+        height: auto;
+        max-width: 220px;
+    }
+
+    .research-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+/* Small mobile (480px and below) */
+@media (max-width: 480px) {
+    .xentaflex-review-container {
+        padding: 10px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .review-wrapper {
+        padding: 0 10px;
+        width: 100%;
+    }
+
+    .main-title {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+
+    .meta-info {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    .rating-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .product-image {
+        max-height: 200px;
+    }
+
+    .overall-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .overall-header .score-number {
+        align-self: flex-end;
+    }
+
+    /* Ensure no horizontal overflow */
+    body,
+    html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+}
+
+/* Extra small screens (360px and below) */
+@media (max-width: 360px) {
+    .main-title {
+        font-size: 20px;
+    }
+
+    .star {
+        font-size: 20px;
+    }
+
+    .toc-title {
+        font-size: 16px;
+        padding: 8px 10px;
+    }
+
+    .toc-list a {
+        font-size: 11px;
+        padding: 6px 4px;
+    }
+
+    .review-wrapper {
+        padding: 0 8px;
     }
 }
