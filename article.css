@@ -357,20 +357,35 @@ hr {
     resize: vertical;
     min-height: 120px;
     margin-top: 6px;
+    resize: none;
 }
 
 .comment-form input[type="text"],
 .comment-form input[type="email"],
 .comment-form input[type="url"] {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    border-radius: 8px;
-    border: 1.2px solid #e0e0e0;
-    padding: 10px 12px;
-    font-size: 1rem;
-    background: #f6f6f6;
-    margin-top: 6px;
+    outline: none;
+}
+
+.comment-form input[type="text"]:focus,
+.comment-form input[type="email"]:focus,
+.comment-form input[type="url"]:focus,
+.comment-form textarea:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.13);
+    outline: none;
+}
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"] {
+width: 100%;
+max-width: 100%;
+box-sizing: border-box;
+border-radius: 8px;
+border: 1.2px solid #e0e0e0;
+padding: 10px 12px;
+font-size: 1rem;
+background: #f6f6f6;
+margin-top: 6px;
 }
 
 .website-input-wrapper {
@@ -1275,6 +1290,7 @@ hr {
     .comment-form input[type="email"],
     .comment-form input[type="url"] {
         font-size: 16px;
+
         /* Prevents iOS zoom */
     }
 
